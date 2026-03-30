@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="James — Poet. Original works by James, a former investment banker and cancer survivor sharing handwritten poems from 2000-2003 exploring faith, identity, and purpose.">
+  <meta name="keywords" content="poetry, poet, James, handwritten poems, faith, identity, survivor">
+  <meta name="author" content="James">
+  <meta property="og:title" content="James — Poet | Original Works">
+  <meta property="og:description" content="Discover handwritten poems exploring faith, identity, and purpose by James, a cancer survivor and former investment banker.">
+  <meta property="og:type" content="website">
+  
+  <title>James — Poet | Original Works & Featured Poems</title>
+  
+  <!-- Preconnect to Google Fonts for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ═══ ROOT VARIABLES ═══ */
+    :root {
+      --bg: #0c0a08;
+      --bg-card: #151210;
+      --bg-card-hover: #1c1915;
+      --cream: #f0e6d2;
+      --cream-muted: #b8a98e;
+      --gold: #d4a853;
+      --gold-bright: #f0c96e;
+      --red-deep: #9b2226;
+      --red-warm: #c43e3e;
+      --orange: #e07b3a;
+      --purple: #7b4fa0;
+      --amber: #d4983a;
+      --teal: #3a8a7a;
+      --text-body: #c4b69a;
+      --text-dim: #7a6e5c;
+      --border: rgba(212, 168, 83, 0.12);
+      --border-hover: rgba(212, 168, 83, 0.3);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Serif 4', Georgia, serif;
+      --font-mono: 'DM Mono', monospace;
+      --font-heading: 'Bebas Neue', sans-serif;
+      --transition-fast: 0.2s ease-out;
+      --transition-base: 0.3s ease-out;
+      --transition-slow: 0.7s ease-out;
+    }
+
+    /* ═══ RESET & BASE STYLES ═══ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ═══ FLOATING CIRCLES BACKGROUND ═══ */
+    .circles-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.07;
+      filter: blur(1px);
+      will-change: transform;
+    }
+
+    .circle--orange-1 {
+      width: 320px;
+      height: 320px;
+      background: var(--orange);
+      top: -80px;
+      left: -60px;
+      animation: fA 22s ease-in-out infinite;
+    }
+
+    .circle--purple-1 {
+      width: 260px;
+      height: 260px;
+      background: var(--purple);
+      top: 15%;
+      right: -40px;
+      animation: fB 26s ease-in-out infinite;
+    }
+
+    .circle--red-1 {
+      width: 200px;
+      height: 200px;
+      background: var(--red-deep);
+      top: 40%;
+      left: 10%;
+      animation: fC 20s ease-in-out infinite;
+    }
+
+    .circle--gold-1 {
+      width: 280px;
+      height: 280px;
+      background: var(--gold);
+      top: 60%;
+      right: 15%;
+      animation: fA 24s ease-in-out infinite reverse;
+    }
+
+    .circle--orange-2 {
+      width: 180px;
+      height: 180px;
+      background: var(--orange);
+      bottom: 10%;
+      left: -30px;
+      animation: fB 18s ease-in-out infinite;
+    }
+
+    .circle--purple-2 {
+      width: 240px;
+      height: 240px;
+      background: var(--purple);
+      bottom: -60px;
+      right: -50px;
+      animation: fC 28s ease-in-out infinite;
+    }
+
+    .circle--teal-1 {
+      width: 160px;
+      height: 160px;
+      background: var(--teal);
+      top: 25%;
+      left: 50%;
+      animation: fA 30s ease-in-out infinite;
+    }
+
+    .circle--red-2 {
+      width: 220px;
+      height: 220px;
+      background: var(--red-warm);
+      bottom: 35%;
+      left: 60%;
+      animation: fB 22s ease-in-out infinite reverse;
+    }
+
+    @keyframes fA {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(30px, -20px) scale(1.05);
+      }
+      66% {
+        transform: translate(-15px, 25px) scale(0.95);
+      }
+    }
+
+    @keyframes fB {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(-25px, 15px) scale(0.97);
+      }
+      66% {
+        transform: translate(20px, -30px) scale(1.03);
+      }
+    }
+
+    @keyframes fC {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(15px, 20px) scale(1.06);
+      }
+    }
+
+    /* Noise texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ═══ NAVIGATION ═══ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(12, 10, 8, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--cream);
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: color var(--transition-base);
+    }
+
+    .nav-logo:hover {
+      color: var(--gold);
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.3rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 0.6rem 1.1rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      text-decoration: none;
+      border-radius: 2px;
+      transition: color var(--transition-base), background var(--transition-base);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--gold);
+      background: rgba(212, 168, 83, 0.06);
+      outline: none;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--cream);
+      transition: transform var(--transition-base), opacity var(--transition-base);
+    }
+
+    /* ═══ CONTENT WRAPPER ═══ */
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ═══ HERO SECTION ═══ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+
+    .hero-circles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-circles .hc {
+      position: absolute;
+      border-radius: 50%;
+      will-change: transform;
+    }
+
+    .hc--1 {
+      width: 140px;
+      height: 140px;
+      background: var(--orange);
+      opacity: 0.15;
+      top: 18%;
+      left: 8%;
+      animation: fA 16s ease-in-out infinite;
+    }
+
+    .hc--2 {
+      width: 100px;
+      height: 100px;
+      background: var(--purple);
+      opacity: 0.18;
+      top: 12%;
+      right: 12%;
+      animation: fB 14s ease-in-out infinite;
+    }
+
+    .hc--3 {
+      width: 180px;
+      height: 180px;
+      background: var(--red-deep);
+      opacity: 0.1;
+      bottom: 20%;
+      left: 15%;
+      animation: fC 20s ease-in-out infinite;
+    }
+
+    .hc--4 {
+      width: 120px;
+      height: 120px;
+      background: var(--gold);
+      opacity: 0.12;
+      bottom: 25%;
+      right: 8%;
+      animation: fA 18s ease-in-out infinite reverse;
+    }
+
+    .hc--5 {
+      width: 90px;
+      height: 90px;
+      background: var(--red-warm);
+      opacity: 0.14;
+      top: 45%;
+      left: 55%;
+      animation: fB 22s ease-in-out infinite;
+    }
+
+    .hc--6 {
+      width: 70px;
+      height: 70px;
+      background: var(--amber);
+      opacity: 0.16;
+      top: 60%;
+      left: 30%;
+      animation: fC 15s ease-in-out infinite;
+    }
+
+    .hero-pretitle {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 0.3s forwards;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      line-height: 0.95;
+      color: var(--cream);
+      margin-bottom: 0.15em;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 0.5s forwards;
+    }
+
+    .hero h1 .alt {
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-tagline {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream-muted);
+      max-width: 500px;
+      margin: 1.5rem auto 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 0.7s forwards;
+    }
+
+    .hero-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 1s forwards;
+    }
+
+    .hero-scroll span {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .hero-scroll .arrow {
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      animation: bob 2s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bob {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    /* ═══ SECTIONS ═══ */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--cream);
+      letter-spacing: 0.06em;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title .lo {
+      text-transform: lowercase;
+      font-size: 0.85em;
+    }
+
+    .section-rule {
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.5rem 0 0;
+      border: none;
+    }
+
+    .section-intro {
+      max-width: 620px;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin-top: 1.5rem;
+    }
+
+    /* ═══ DIVIDER ═══ */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 3rem 0;
+    }
+
+    .divider .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .divider .dot:nth-child(1) {
+      background: var(--orange);
+    }
+
+    .divider .dot:nth-child(2) {
+      background: var(--purple);
+    }
+
+    .divider .dot:nth-child(3) {
+      background: var(--red-deep);
+    }
+
+    .divider .dot:nth-child(4) {
+      background: var(--gold);
+    }
+
+    .divider .dot:nth-child(5) {
+      background: var(--teal);
+    }
+
+    /* ═══ ABOUT SECTION ═══ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-visual {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .about-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 35%, rgba(212, 168, 83, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 30% 70%, rgba(155, 34, 38, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 40% at 70% 20%, rgba(123, 79, 160, 0.08) 0%, transparent 50%);
+    }
+
+    .about-visual::after {
+      content: 'J';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-weight: 900;
+      color: rgba(240, 230, 210, 0.08);
+      z-index: 0;
+    }
+
+    .cd {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      will-change: transform;
+    }
+
+    .cd:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      background: var(--orange);
+      top: -50px;
+      left: -50px;
+      animation: fA 12s ease-in-out infinite;
+    }
+
+    .cd:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      background: var(--purple);
+      bottom: -30px;
+      right: -30px;
+      animation: fB 14s ease-in-out infinite;
+    }
+
+    .cd:nth-child(3) {
+      width: 120px;
+      height: 120px;
+      background: var(--gold);
+      top: 50%;
+      left: 50%;
+      animation: fC 16s ease-in-out infinite;
+    }
+
+    .about-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    .about-bio {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-body);
+      margin-bottom: 2rem;
+    }
+
+    .about-bio strong {
+      color: var(--cream);
+      font-weight: 600;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .about-stat {
+      flex: 1;
+    }
+
+    .about-stat .num {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-stat .label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ═══ POEMS SECTION ═══ */
+    .poems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .poem-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+
+    .poem-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .poem-card-header {
+      display: flex;
+      height: 100%;
+    }
+
+    .poem-accent-bar {
+      width: 4px;
+      background: linear-gradient(180deg, var(--orange), var(--purple), var(--red-deep));
+      flex-shrink: 0;
+    }
+
+    .poem-card-content {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .poem-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .poem-date {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+
+    .poem-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(212, 168, 83, 0.08);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    .poem-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .poem-excerpt {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-body);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .poem-toggle {
+      align-self: flex-start;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold);
+      padding: 0.6rem 1.2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .poem-toggle:hover {
+      background: rgba(212, 168, 83, 0.1);
+      border-color: var(--gold-bright);
+      color: var(--gold-bright);
+    }
+
+    .poem-toggle:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .arrow-icon {
+      font-size: 0.8rem;
+      transition: transform var(--transition-base);
+    }
+
+    .poem-toggle.open .arrow-icon {
+      transform: rotate(180deg);
+    }
+
+    .poem-full {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-slow);
+    }
+
+    .poem-full.show {
+      max-height: 1000px;
+    }
+
+    .poem-full-text {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-body);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ═══ THEMES SECTION ═══ */
+    .themes-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 3rem;
+      justify-content: flex-start;
+    }
+
+    .theme-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--cream-muted);
+      padding: 0.6rem 1.3rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      cursor: default;
+      transition: all var(--transition-base);
+      background: transparent;
+    }
+
+    .theme-pill:hover {
+      color: var(--cream);
+      border-color: var(--border-hover);
+      background: rgba(212, 168, 83, 0.05);
+    }
+
+    .theme-pill[data-color="orange"] {
+      border-color: rgba(224, 123, 58, 0.3);
+      color: var(--orange);
+    }
+
+    .theme-pill[data-color="orange"]:hover {
+      background: rgba(224, 123, 58, 0.08);
+      border-color: var(--orange);
+    }
+
+    .theme-pill[data-color="purple"] {
+      border-color: rgba(123, 79, 160, 0.3);
+      color: var(--purple);
+    }
+
+    .theme-pill[data-color="purple"]:hover {
+      background: rgba(123, 79, 160, 0.08);
+      border-color: var(--purple);
+    }
+
+    .theme-pill[data-color="red"] {
+      border-color: rgba(155, 34, 38, 0.3);
+      color: var(--red-warm);
+    }
+
+    .theme-pill[data-color="red"]:hover {
+      background: rgba(155, 34, 38, 0.08);
+      border-color: var(--red-warm);
+    }
+
+    .theme-pill[data-color="gold"] {
+      border-color: rgba(212, 168, 83, 0.3);
+      color: var(--gold);
+    }
+
+    .theme-pill[data-color="gold"]:hover {
+      background: rgba(212, 168, 83, 0.08);
+      border-color: var(--gold);
+    }
+
+    .theme-pill[data-color="teal"] {
+      border-color: rgba(58, 138, 122, 0.3);
+      color: var(--teal);
+    }
+
+    .theme-pill[data-color="teal"]:hover {
+      background: rgba(58, 138, 122, 0.08);
+      border-color: var(--teal);
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-circles {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-circles .fc {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .footer-circles .fc:nth-child(1) {
+      background: var(--orange);
+    }
+
+    .footer-circles .fc:nth-child(2) {
+      background: var(--purple);
+    }
+
+    .footer-circles .fc:nth-child(3) {
+      background: var(--red-deep);
+    }
+
+    .footer-circles .fc:nth-child(4) {
+      background: var(--gold);
+    }
+
+    .footer-circles .fc:nth-child(5) {
+      background: var(--teal);
+    }
+
+    .footer-name {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      letter-spacing: 0.15em;
+      color: var(--cream-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+
+    /* ═══ SCROLL REVEAL ═══ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══ RESPONSIVE DESIGN ═══ */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(12, 10, 8, 0.96);
+        backdrop-filter: blur(16px);
+        padding: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-visual {
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .about-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .poem-card-content {
+        padding: 1.8rem 1.5rem 1.5rem;
+      }
+
+      .poems-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 4rem 1.5rem;
+      }
+
+      .hero {
+        padding: 4rem 1.5rem 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-inner {
+        padding: 0 1rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+      }
+
+      .section-title {
+        font-size: clamp(1.6rem, 4vw, 2.5rem);
+      }
+
+      .about-quote {
+        font-size: 1.1rem;
+      }
+
+      .about-stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .poem-card-content {
+        padding: 1.5rem 1rem;
+      }
+
+      .themes-cloud {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background circles -->
+  <div class="circles-container">
+    <div class="circle circle--orange-1"></div>
+    <div class="circle circle--purple-1"></div>
+    <div class="circle circle--red-1"></div>
+    <div class="circle circle--gold-1"></div>
+    <div class="circle circle--orange-2"></div>
+    <div class="circle circle--purple-2"></div>
+    <div class="circle circle--teal-1"></div>
+    <div class="circle circle--red-2"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">J<span>.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#poems">Poems</a></li>
+        <li><a href="#themes">Themes</a></li>
+      </ul>
+      <button class="nav-hamburger" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="content">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-circles">
+        <div class="hc hc--1"></div>
+        <div class="hc hc--2"></div>
+        <div class="hc hc--3"></div>
+        <div class="hc hc--4"></div>
+        <div class="hc hc--5"></div>
+        <div class="hc hc--6"></div>
+      </div>
+      <div class="hero-pretitle">Original Works by</div>
+      <h1>J<span class="alt">a</span>M<span class="alt">e</span>S</h1>
+      <p class="hero-tagline">Back with a vengeance &amp; perfected purpose</p>
+      <div class="hero-scroll">
+        <span>scroll down</span>
+        <div class="arrow">↓</div>
+      </div>
+    </section>
+
+    <div class="divider">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="reveal">
+        <div class="section-label">About the Poet</div>
+        <h2 class="section-title">TH<span class="lo">e</span> V<span class="lo">oice</span> B<span class="lo">ehind</span> TH<span class="lo">e</span> V<span class="lo">erse</span></h2>
+        <hr class="section-rule" aria-hidden="true">
+      </div>
+      <div class="about-grid reveal">
+        <div class="about-visual">
+          <div class="cd"></div>
+          <div class="cd"></div>
+          <div class="cd"></div>
+        </div>
+        <div>
+          <blockquote class="about-quote">
+            "I lost the power of speech for an entire year. Now every word I write carries the weight of silence survived."
+          </blockquote>
+          <div class="about-bio">
+            <strong>James</strong> is a former investment banker, 2x cofounder, and stage IV throat cancer survivor who lost the power of speech for an entire year. These poems — handwritten in journals between 2000 and 2003 — predate the silence but prophesy the reckoning. They wrestle with identity, faith, materiality, and the relentless human search for purpose. Now he's back with a vengeance and a perfected purpose: to share what was written in the dark, so it might resonate in the light.
+          </div>
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="num">3</div>
+              <div class="label">Poems Featured</div>
+            </div>
+            <div class="about-stat">
+              <div class="num">2000–03</div>
+              <div class="label">Written</div>
+            </div>
+            <div class="about-stat">
+              <div class="num">ATL</div>
+              <div class="label">Based</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- Poems Section -->
+    <section class="section" id="poems">
+      <div class="reveal">
+        <div class="section-label">Featured Works</div>
+        <h2 class="section-title">TH<span class="lo">e</span> P<span class="lo">oems</span></h2>
+        <hr class="section-rule" aria-hidden="true">
+        <p class="section-intro">Handwritten in journals, carried through years. Click any poem to read the full text.</p>
+      </div>
+      <div class="poems-grid">
+        <!-- Poem 1 -->
+        <div class="poem-card reveal" onclick="togglePoem(this)">
+          <div class="poem-card-header">
+            <div class="poem-accent-bar"></div>
+            <div class="poem-card-content">
+              <div class="poem-meta">
+                <span class="poem-date">August 31, 2003 · 4:30 PM</span>
+                <span class="poem-tag">Reckoning</span>
+              </div>
+              <h3>BACK OF THE CLASS</h3>
+              <div class="poem-excerpt">In life you sit at the back of the class past by the last, new math you can't pass yet always ready to show yo' ass, alas, shame overtakes you for…</div>
+              <button class="poem-toggle" aria-label="Expand poem: Back of the Class">
+                <span>Read Full Poem</span>
+                <span class="arrow-icon">▾</span>
+              </button>
+              <div class="poem-full">
+                <div class="poem-full-text">In life you sit at the back of the class
+past by the last, new math you can't pass
+yet always ready to show yo' ass, alas, shame overtakes you for
+you dull your pain through daydreams of cash
+yes – just one big stash – yes – just one big lick
+and you'll make 'em all sick, quick, so to the illusion you stick
+just the same – chaos you claim abdicating your name
+for a chance at the game your spirit you maim
+fame… forever just beyond reach
+you're called upfront now to teach
+your chance for all to see – more importantly for you to show
+that you do know – dormant seeds once planted eventually can grow
+to the front you now confidently go…
+walk that walk… talk that talk…
+magic wand is the chalk… the teacher you balk
+just about to bust the convention and
+open the door to the dynamic dimension…
+Oh shit! did I forget to mention that
+in the back of the class they don't pay attention
+and now that new math is wippin' that ass
+like staring into the looking glass
+although easily over 6ft tall you're feelin' real small
+… tryin to stall … shrinking while you crawl
+for you can't save both face and ass
+– as you reclaim your seat at the back of the class.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Poem 2 -->
+        <div class="poem-card reveal" onclick="togglePoem(this)">
+          <div class="poem-card-header">
+            <div class="poem-accent-bar"></div>
+            <div class="poem-card-content">
+              <div class="poem-meta">
+                <span class="poem-date">March 16, 2001 · 1:15 AM</span>
+                <span class="poem-tag">Faith</span>
+              </div>
+              <h3>REALITY VS. MATERIALITY</h3>
+              <div class="poem-excerpt">I am the scion of the solution son to the evolver of evolution whose divine power emanates in elocution casting forth his revolution of absolution…</div>
+              <button class="poem-toggle" aria-label="Expand poem: Reality vs. Materiality">
+                <span>Read Full Poem</span>
+                <span class="arrow-icon">▾</span>
+              </button>
+              <div class="poem-full">
+                <div class="poem-full-text">I am the scion of the solution
+son to the evolver of evolution
+whose divine power emanates in elocution
+casting forth his revolution of absolution
+birthing the distribution…
+of sufficient grace to transfigure a race
+in whose face is found the trace –
+of the divine…
+if we but first remind of a time
+in which the mind was refined
+where the true Son did shine
+where materiality was a crime
+perpetrators punished with hard time
+sentences served in prisons of closed mind
+yet… a hope of parole one can find
+in the following line – sublimely defined:
+
+Materiality = shadow behind the back of reality…</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Poem 3 -->
+        <div class="poem-card reveal" onclick="togglePoem(this)">
+          <div class="poem-card-header">
+            <div class="poem-accent-bar"></div>
+            <div class="poem-card-content">
+              <div class="poem-meta">
+                <span class="poem-date">July 12, 2002 · 11:47 PM</span>
+                <span class="poem-tag">Seeking</span>
+              </div>
+              <h3>MISSING MIND</h3>
+              <div class="poem-excerpt">Thoughts of anger and frustration caught in a vice like grip… anticipation of desperation blind following the blind into the ditch i trip…</div>
+              <button class="poem-toggle" aria-label="Expand poem: Missing Mind">
+                <span>Read Full Poem</span>
+                <span class="arrow-icon">▾</span>
+              </button>
+              <div class="poem-full">
+                <div class="poem-full-text">Thoughts of anger and frustration
+caught in a vice like grip… anticipation of desperation
+blind following the blind into the ditch i trip…
+40 days and 40 nights lost in the wilderness at the back of my mind
+feverently searching for that which i've left behind
+that which was bequeathed to me and undeniably mine
+for even the prodigal did return in time
+his true purpose to find
+
+oh seeker of a sign I am the seeker after the same sign
+sense of self i seek to define
+toward the prodigal allegory i now incline
+for you see i've lost my mind
+yes, i've lost my mind
+yet i seek to find – to this regard
+throughout my past i rewind
+as to that part of me – a
+pow of the babylonian captivity
+desperately needing to see
+repatriation of what i used to be
+if the sum doth equate to the whole
+then to be whole is my geometric goal
+as capitalism steals the communal soul
+but in the meantime
+between time
+
+i exist in the sublime and wrestle with the cipher that is my divine
+until i find
+the key to my missing mind</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- Themes Section -->
+    <section class="section" id="themes">
+      <div class="reveal">
+        <div class="section-label">Explore</div>
+        <h2 class="section-title">TH<span class="lo">emes</span> &amp; T<span class="lo">ags</span></h2>
+        <hr class="section-rule" aria-hidden="true">
+      </div>
+      <div class="themes-cloud reveal">
+        <span class="theme-pill" data-color="gold">Faith</span>
+        <span class="theme-pill" data-color="red">Reckoning</span>
+        <span class="theme-pill" data-color="purple">Identity</span>
+        <span class="theme-pill" data-color="teal">Seeking</span>
+        <span class="theme-pill" data-color="orange">Redemption</span>
+        <span class="theme-pill" data-color="gold">The Divine</span>
+        <span class="theme-pill" data-color="red">Struggle</span>
+        <span class="theme-pill" data-color="purple">The Prodigal</span>
+        <span class="theme-pill" data-color="teal">Purpose</span>
+        <span class="theme-pill" data-color="orange">Materiality</span>
+        <span class="theme-pill" data-color="gold">Grace</span>
+        <span class="theme-pill" data-color="red">Silence &amp; Voice</span>
+        <span class="theme-pill" data-color="purple">Captivity</span>
+        <span class="theme-pill" data-color="teal">Wholeness</span>
+        <span class="theme-pill" data-color="orange">Survivorship</span>
+        <span class="theme-pill" data-color="gold">Allegory</span>
+        <span class="theme-pill" data-color="red">The Back Row</span>
+        <span class="theme-pill" data-color="purple">Babylon</span>
+        <span class="theme-pill" data-color="teal">Rebirth</span>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-circles">
+          <div class="fc"></div>
+          <div class="fc"></div>
+          <div class="fc"></div>
+          <div class="fc"></div>
+          <div class="fc"></div>
+        </div>
+        <div class="footer-name">JAMES — POET</div>
+        <div class="footer-copy">&copy; 2026 James. All rights reserved. Poems written 2000–2003.</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Poem expansion
+    function togglePoem(card) {
+      const full = card.querySelector('.poem-full');
+      const toggle = card.querySelector('.poem-toggle');
+      if (full && toggle) {
+        full.classList.toggle('show');
+        toggle.classList.toggle('open');
+        toggle.querySelector('span:first-child').textContent = full.classList.contains('show')
+          ? 'Close Poem'
+          : 'Read Full Poem';
+      }
+    }
+
+    // Prevent button click from triggering card click
+    document.querySelectorAll('.poem-toggle').forEach(btn => {
+      btn.addEventListener('click', e => e.stopPropagation());
+    });
+
+    // Scroll reveal animation
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Smooth scroll navigation
+    document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          navLinks.classList.remove('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
