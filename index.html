@@ -1306,9 +1306,12 @@ the key to my missing mind</div>
       }
     }
 
-    // Prevent the button click from also firing the card's onclick
+    // Handle button click separately and prevent double-firing from card onclick
     document.querySelectorAll('.poem-toggle').forEach(btn => {
-      btn.addEventListener('click', e => e.stopPropagation());
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        togglePoem(btn.closest('.poem-card'));
+      });
     });
 
     // ─── Scroll reveal ───────────────────────────────────────────────────────
