@@ -33,7 +33,7 @@
   <!-- Preconnect to Google Fonts for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=Bebas+Neue&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     /* ═══ ROOT VARIABLES ═══ */
@@ -583,7 +583,6 @@
       border: 1px solid var(--border);
       border-radius: 4px;
       overflow: hidden;
-      cursor: pointer;
       transition: all var(--transition-base);
     }
 
@@ -1025,6 +1024,16 @@
       overflow: hidden;
     }
 
+    /* ═══ REDUCED MOTION ═══ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
     /* ═══ RESPONSIVE DESIGN ═══ */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -1175,7 +1184,7 @@
       <div class="poems-grid">
 
         <!-- Poem 1 -->
-        <div class="poem-card reveal" onclick="togglePoem(this)">
+        <div class="poem-card reveal">
           <div class="poem-card-header">
             <div class="poem-accent-bar"></div>
             <div class="poem-card-content">
@@ -1186,7 +1195,7 @@
               <h3>BACK OF THE CLASS</h3>
               <div class="poem-excerpt">In life you sit at the back of the class past by the last, new math you can't pass yet always ready to show yo' ass, alas, shame overtakes you for…</div>
               <div class="poem-actions">
-                <button class="poem-toggle" aria-label="Expand poem: Back of the Class">
+                <button class="poem-toggle" aria-expanded="false" aria-label="Expand poem: Back of the Class">
                   <span>Read Full Poem</span>
                   <span class="arrow-icon">▾</span>
                 </button>
@@ -1229,7 +1238,7 @@ for you can't save both face and ass
         </div>
 
         <!-- Poem 2 -->
-        <div class="poem-card reveal" onclick="togglePoem(this)">
+        <div class="poem-card reveal">
           <div class="poem-card-header">
             <div class="poem-accent-bar"></div>
             <div class="poem-card-content">
@@ -1240,7 +1249,7 @@ for you can't save both face and ass
               <h3>REALITY VS. MATERIALITY</h3>
               <div class="poem-excerpt">I am the scion of the solution son to the evolver of evolution whose divine power emanates in elocution casting forth his revolution of absolution…</div>
               <div class="poem-actions">
-                <button class="poem-toggle" aria-label="Expand poem: Reality vs. Materiality">
+                <button class="poem-toggle" aria-expanded="false" aria-label="Expand poem: Reality vs. Materiality">
                   <span>Read Full Poem</span>
                   <span class="arrow-icon">▾</span>
                 </button>
@@ -1276,7 +1285,7 @@ Materiality = shadow behind the back of reality…</div>
         </div>
 
         <!-- Poem 3 -->
-        <div class="poem-card reveal" onclick="togglePoem(this)">
+        <div class="poem-card reveal">
           <div class="poem-card-header">
             <div class="poem-accent-bar"></div>
             <div class="poem-card-content">
@@ -1287,7 +1296,7 @@ Materiality = shadow behind the back of reality…</div>
               <h3>MISSING MIND</h3>
               <div class="poem-excerpt">Thoughts of anger and frustration caught in a vice like grip… anticipation of desperation blind following the blind into the ditch i trip…</div>
               <div class="poem-actions">
-                <button class="poem-toggle" aria-label="Expand poem: Missing Mind">
+                <button class="poem-toggle" aria-expanded="false" aria-label="Expand poem: Missing Mind">
                   <span>Read Full Poem</span>
                   <span class="arrow-icon">▾</span>
                 </button>
@@ -1423,7 +1432,7 @@ the key to my missing mind</div>
           <div class="fc"></div><div class="fc"></div>
         </div>
         <div class="footer-name">JAMES — POET</div>
-        <div class="footer-copy">&copy; 2026 James. All rights reserved. Poems written 2000–2003.</div>
+        <div class="footer-copy">&copy; <span id="copyYear">2026</span> James. All rights reserved. Poems written 2000–2003.</div>
       </div>
     </footer>
 
@@ -1459,24 +1468,23 @@ the key to my missing mind</div>
       navLinks.classList.toggle('open');
     });
 
+    // ─── Auto year in footer ─────────────────────────────────────────────────
+    document.getElementById('copyYear').textContent = new Date().getFullYear();
+
     // ─── Poem expansion ──────────────────────────────────────────────────────
     function togglePoem(card) {
       const full   = card.querySelector('.poem-full');
       const toggle = card.querySelector('.poem-toggle');
-      if (full && toggle) {
-        full.classList.toggle('show');
-        toggle.classList.toggle('open');
-        toggle.querySelector('span:first-child').textContent =
-          full.classList.contains('show') ? 'Close Poem' : 'Read Full Poem';
-      }
+      if (!full || !toggle) return;
+      const isOpen = full.classList.toggle('show');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggle.querySelector('span:first-child').textContent =
+        isOpen ? 'Close Poem' : 'Read Full Poem';
     }
 
-    // Handle button click separately and prevent double-firing from card onclick
     document.querySelectorAll('.poem-toggle').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        togglePoem(btn.closest('.poem-card'));
-      });
+      btn.addEventListener('click', () => togglePoem(btn.closest('.poem-card')));
     });
 
     // ─── Scroll reveal ───────────────────────────────────────────────────────
