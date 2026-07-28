@@ -9,6 +9,24 @@
   <meta property="og:title" content="James — Poet | Original Works">
   <meta property="og:description" content="Discover handwritten poems exploring faith, identity, and purpose by James, a cancer survivor and former investment banker.">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="James — Poet">
+  <meta property="og:url" content="https://warriorpoetsavant.com/">
+  <meta property="og:image" content="https://warriorpoetsavant.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:alt" content="James — Poet. Original works. Back with a vengeance and perfected purpose. Handwritten poems 2000–2003.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="James — Poet | Original Works">
+  <meta name="twitter:description" content="Handwritten poems exploring faith, identity, and purpose by James — a cancer survivor and former investment banker.">
+  <meta name="twitter:image" content="https://warriorpoetsavant.com/images/og-image.jpg">
+  <meta name="twitter:image:alt" content="James — Poet. Handwritten poems 2000–2003.">
+
+  <meta name="theme-color" content="#0c0a08">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <title>James — Poet | Original Works & Featured Poems</title>
 
@@ -893,6 +911,120 @@
       transform: translateY(0);
     }
 
+    /* ═══ POEM ACTIONS (button row) ═══ */
+    .poem-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      align-items: center;
+      align-self: flex-start;
+    }
+
+    .poem-original {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      background: transparent;
+      border: none;
+      padding: 0.6rem 0;
+      cursor: pointer;
+      transition: color var(--transition-base);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .poem-original:hover,
+    .poem-original:focus-visible {
+      color: var(--gold);
+      outline: none;
+    }
+
+    .poem-original::before {
+      content: '✎';
+      font-size: 0.95rem;
+      opacity: 0.75;
+    }
+
+    /* ═══ LIGHTBOX ═══ */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(6, 5, 4, 0.94);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 2rem 2rem;
+      opacity: 0;
+      transition: opacity var(--transition-base);
+    }
+
+    .lightbox.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: calc(100vh - 10rem);
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-caption {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -3rem;
+      right: 0;
+      background: rgba(12, 10, 8, 0.6);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.4rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition-base), border-color var(--transition-base);
+    }
+
+    .lightbox-close:hover,
+    .lightbox-close:focus-visible {
+      color: var(--gold);
+      border-color: var(--gold);
+      outline: none;
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
     /* ═══ RESPONSIVE DESIGN ═══ */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -1053,10 +1185,18 @@
               </div>
               <h3>BACK OF THE CLASS</h3>
               <div class="poem-excerpt">In life you sit at the back of the class past by the last, new math you can't pass yet always ready to show yo' ass, alas, shame overtakes you for…</div>
-              <button class="poem-toggle" aria-label="Expand poem: Back of the Class">
-                <span>Read Full Poem</span>
-                <span class="arrow-icon">▾</span>
-              </button>
+              <div class="poem-actions">
+                <button class="poem-toggle" aria-label="Expand poem: Back of the Class">
+                  <span>Read Full Poem</span>
+                  <span class="arrow-icon">▾</span>
+                </button>
+                <button type="button" class="poem-original"
+                        data-image="images/back-of-the-class.jpg"
+                        data-title="Back of the Class"
+                        aria-label="View handwritten original: Back of the Class">
+                  <span>View Handwritten Original</span>
+                </button>
+              </div>
               <div class="poem-full">
                 <div class="poem-full-text">In life you sit at the back of the class
 past by the last, new math you can't pass
@@ -1099,10 +1239,18 @@ for you can't save both face and ass
               </div>
               <h3>REALITY VS. MATERIALITY</h3>
               <div class="poem-excerpt">I am the scion of the solution son to the evolver of evolution whose divine power emanates in elocution casting forth his revolution of absolution…</div>
-              <button class="poem-toggle" aria-label="Expand poem: Reality vs. Materiality">
-                <span>Read Full Poem</span>
-                <span class="arrow-icon">▾</span>
-              </button>
+              <div class="poem-actions">
+                <button class="poem-toggle" aria-label="Expand poem: Reality vs. Materiality">
+                  <span>Read Full Poem</span>
+                  <span class="arrow-icon">▾</span>
+                </button>
+                <button type="button" class="poem-original"
+                        data-image="images/reality-vs-materiality.jpg"
+                        data-title="Reality vs. Materiality"
+                        aria-label="View handwritten original: Reality vs. Materiality">
+                  <span>View Handwritten Original</span>
+                </button>
+              </div>
               <div class="poem-full">
                 <div class="poem-full-text">I am the scion of the solution
 son to the evolver of evolution
@@ -1138,10 +1286,18 @@ Materiality = shadow behind the back of reality…</div>
               </div>
               <h3>MISSING MIND</h3>
               <div class="poem-excerpt">Thoughts of anger and frustration caught in a vice like grip… anticipation of desperation blind following the blind into the ditch i trip…</div>
-              <button class="poem-toggle" aria-label="Expand poem: Missing Mind">
-                <span>Read Full Poem</span>
-                <span class="arrow-icon">▾</span>
-              </button>
+              <div class="poem-actions">
+                <button class="poem-toggle" aria-label="Expand poem: Missing Mind">
+                  <span>Read Full Poem</span>
+                  <span class="arrow-icon">▾</span>
+                </button>
+                <button type="button" class="poem-original"
+                        data-image="images/missing-mind.jpg"
+                        data-title="Missing Mind"
+                        aria-label="View handwritten original: Missing Mind">
+                  <span>View Handwritten Original</span>
+                </button>
+              </div>
               <div class="poem-full">
                 <div class="poem-full-text">Thoughts of anger and frustration
 caught in a vice like grip… anticipation of desperation
@@ -1273,6 +1429,15 @@ the key to my missing mind</div>
 
   </div><!-- /.content -->
 
+  <!-- Lightbox for handwritten originals -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Handwritten original">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+      <img id="lightboxImg" src="" alt="">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
   <!-- Supabase JS client (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -1334,6 +1499,46 @@ the key to my missing mind</div>
           navLinks.classList.remove('open');
         }
       });
+    });
+
+    // ─── Lightbox for handwritten originals ──────────────────────────────────
+    const lightbox        = document.getElementById('lightbox');
+    const lightboxImg     = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose   = document.getElementById('lightboxClose');
+    let   lightboxLastFocus = null;
+
+    function openLightbox(imgSrc, title) {
+      lightboxLastFocus  = document.activeElement;
+      lightboxImg.src    = imgSrc;
+      lightboxImg.alt    = title + ' — handwritten original';
+      lightboxCaption.textContent = title;
+      lightbox.classList.add('open');
+      document.body.classList.add('lightbox-open');
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.classList.remove('lightbox-open');
+      lightboxImg.src = '';
+      if (lightboxLastFocus) lightboxLastFocus.focus();
+    }
+
+    document.querySelectorAll('.poem-original').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        openLightbox(btn.dataset.image, btn.dataset.title);
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
 
     // ─── Contact form submission ──────────────────────────────────────────────

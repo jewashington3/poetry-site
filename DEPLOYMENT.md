@@ -1,6 +1,6 @@
 # Deployment Steps — Poetry Website
 
-## Status: Step 1 Complete
+## Status: All Steps Complete — LIVE at [warriorpoetsavant.com](https://warriorpoetsavant.com)
 
 ---
 
@@ -11,25 +11,23 @@
 - [x] Replace placeholders in `index.html` with real credentials
 
 ### Step 2: GitHub Repo
-- [ ] Create a new repo on GitHub (e.g. `poetry-site`)
-- [ ] Initialize git in this folder
-- [ ] Set up Git LFS for the large PDFs (~17-19MB each)
-- [ ] Add remote origin and push
+- [x] Create a new repo on GitHub — [jewashington3/poetry-site](https://github.com/jewashington3/poetry-site)
+- [x] Initialize git in this folder
+- [x] Add remote origin and push
 
 ### Step 3: Vercel Deployment
-- [ ] Sign in to [vercel.com](https://vercel.com) with GitHub
-- [ ] Click **"Add New Project"** and import the GitHub repo
-- [ ] Set framework preset to **Other** (static site)
-- [ ] Click **Deploy**
+- [x] Sign in to [vercel.com](https://vercel.com) with GitHub
+- [x] Click **"Add New Project"** and import the GitHub repo
+- [x] Set framework preset to **Other** (static site)
+- [x] Click **Deploy**
 
-### Step 4 (Optional): Custom Domain
-- [ ] In Vercel, go to **Settings > Domains**
-- [ ] Add your custom domain
-- [ ] Update DNS records as Vercel instructs
+### Step 4: Custom Domain
+- [x] In Vercel, go to **Settings > Domains**
+- [x] Add your custom domain — `warriorpoetsavant.com`
+- [x] Update DNS records as Vercel instructs
 
 ---
 
 ### Notes
 - Supabase anon key is safe to use client-side (Row Level Security protects the data)
-- PDFs total ~55MB — Git LFS recommended to keep the repo lightweight
-- `vercel.json` is already configured for single-page routing
+- Handwritten poem originals live in `images/` as ~500KB JPEGs (converted from the source PDFs)
