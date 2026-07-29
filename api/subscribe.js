@@ -15,12 +15,15 @@ module.exports = async function handler(req, res) {
   }
 
   const apiKey = process.env.BEEHIIV_API_KEY;
-  const pubId  = process.env.BEEHIIV_PUBLICATION_ID;
+  const rawId  = process.env.BEEHIIV_PUBLICATION_ID;
 
-  if (!apiKey || !pubId) {
+  if (!apiKey || !rawId) {
     console.error('Missing BEEHIIV_API_KEY or BEEHIIV_PUBLICATION_ID env var');
     return res.status(500).json({ error: 'Server not configured.' });
   }
+
+  // Beehiiv expects `pub_<uuid>`; accept either format in the env var.
+  const pubId = rawId.startsWith('pub_') ? rawId : `pub_${rawId}`;
 
   try {
     const upstream = await fetch(
