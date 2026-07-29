@@ -1391,7 +1391,7 @@ the key to my missing mind</div>
         <div class="section-label">Reach Out</div>
         <h2 class="section-title">C<span class="lo">onnect</span></h2>
         <hr class="section-rule" aria-hidden="true">
-        <p class="section-intro">Leave a message or your email — stay connected as new poems are shared.</p>
+        <p class="section-intro">Subscribe to receive new poems and occasional letters.</p>
       </div>
       <div class="contact-form-wrapper reveal">
         <form id="contactForm" novalidate>
@@ -1407,18 +1407,7 @@ the key to my missing mind</div>
               autocomplete="email"
             >
           </div>
-          <div class="form-group">
-            <label class="form-label" for="messageInput">
-              Message <span class="optional">(optional)</span>
-            </label>
-            <textarea
-              class="form-textarea"
-              id="messageInput"
-              name="message"
-              placeholder="A word, a thought, a reflection…"
-            ></textarea>
-          </div>
-          <button class="form-submit" type="submit" id="submitBtn">Send Message</button>
+          <button class="form-submit" type="submit" id="submitBtn">Subscribe</button>
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
       </div>
@@ -1447,19 +1436,7 @@ the key to my missing mind</div>
     </div>
   </div>
 
-  <!-- Supabase JS client (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <script>
-    // ─── Supabase config ─────────────────────────────────────────────────────
-    // Replace these two values with your actual Supabase project credentials.
-    // Find them in: Supabase Dashboard → Project Settings → API
-    // The anon key is safe to include here — Supabase RLS controls access.
-    const SUPABASE_URL      = 'https://qqqvzjabxzeokymawcmh.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxcXZ6amFieHplb2t5bWF3Y21oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0OTAxODYsImV4cCI6MjA5MDA2NjE4Nn0.r5AIDHwl--r3w9GSk9RSbzStVQ9QvCsj79v_qMFI2s8';
-
-    const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
     // ─── Navigation toggle ───────────────────────────────────────────────────
     const navToggle = document.getElementById('navToggle');
     const navLinks  = document.getElementById('navLinks');
@@ -1549,44 +1526,45 @@ the key to my missing mind</div>
       if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
 
-    // ─── Contact form submission ──────────────────────────────────────────────
+    // ─── Newsletter subscription ──────────────────────────────────────────────
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const submitBtn  = document.getElementById('submitBtn');
       const formStatus = document.getElementById('formStatus');
       const email      = document.getElementById('emailInput').value.trim();
-      const message    = document.getElementById('messageInput').value.trim();
 
-      // Basic client-side email validation
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         formStatus.textContent = 'Please enter a valid email address.';
         formStatus.className = 'form-status error';
         return;
       }
 
-      submitBtn.disabled      = true;
-      submitBtn.textContent   = 'Sending…';
-      formStatus.className    = 'form-status';
-      formStatus.textContent  = '';
+      submitBtn.disabled     = true;
+      submitBtn.textContent  = 'Subscribing…';
+      formStatus.className   = 'form-status';
+      formStatus.textContent = '';
 
       try {
-        const { error } = await _supabase
-          .from('messages')
-          .insert([{ email, message: message || null }]);
+        const res  = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        const body = await res.json().catch(() => ({}));
 
-        if (error) throw error;
+        if (!res.ok) throw new Error(body.error || 'Something went wrong.');
 
-        formStatus.textContent = 'Message sent. Thank you.';
+        formStatus.textContent = 'Subscribed. Check your inbox for a welcome note.';
         formStatus.className   = 'form-status success';
         e.target.reset();
       } catch (err) {
         console.error(err);
-        formStatus.textContent = 'Something went wrong. Please try again.';
+        formStatus.textContent = err.message || 'Something went wrong. Please try again.';
         formStatus.className   = 'form-status error';
       } finally {
         submitBtn.disabled    = false;
-        submitBtn.textContent = 'Send Message';
+        submitBtn.textContent = 'Subscribe';
       }
     });
   </script>
